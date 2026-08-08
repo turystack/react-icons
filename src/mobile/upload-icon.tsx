@@ -1,0 +1,5 @@
+import { Upload } from '@solar-icons/react-native/Outline'
+
+import { createIcon } from './create-icon.js'
+
+export const UploadIcon = createIcon('icon-upload', Upload)

@@ -1,0 +1,5 @@
+import { MenuDots } from '@solar-icons/react-perf/Outline'
+
+import { createIcon } from './create-icon.js'
+
+export const MoreIcon = createIcon('icon-more', MenuDots)
