@@ -14,6 +14,27 @@
  * Keys are the Simple Icons slug; values are the exported component name minus
  * the `Icon` suffix.
  */
+/**
+ * Brands whose mark has no colour: it is black on light grounds and white on
+ * dark ones, and their guidelines say exactly that.
+ *
+ * Simple Icons publishes one hex per brand, which for these is black. Filling
+ * the mark with it produced a `GitHubColorIcon` that was invisible on a dark
+ * page — 1.0:1 against the showcase background. So their colour variant
+ * inherits `color` instead, which already flips with the theme.
+ *
+ * TikTok belongs here for a different reason: its real mark is cyan, magenta
+ * and black, but Simple Icons only carries the black silhouette. Rendering
+ * that silhouette adaptively is honest; inventing the other two colours is not.
+ */
+export const MONOCHROME_BRANDS = new Set([
+	'Apple',
+	'GitHub',
+	'Threads',
+	'TikTok',
+	'XSocial',
+])
+
 export const BRANDS = {
 	// Providers `nestjs-social-auth` implements — these must exist.
 	// Microsoft is absent here: Simple Icons pulled it, so it is drawn from

@@ -55,6 +55,16 @@ Each brand comes twice. `GoogleIcon` inherits `color` like any other icon;
 <span>Continue with Google</span>
 ```
 
+Five marks — Apple, GitHub, TikTok, Threads and X — have no colour: they are
+black on light grounds and white on dark ones, which is what their guidelines
+say. Their colour variant inherits `color` rather than filling with black, so
+it stays visible either way.
+
+Two of the remaining marks are legitimately hard to place, and no library can
+fix that for you: Snapchat's yellow reads 1.1:1 on white, PayPal's navy 1.5:1
+on a dark ground. Both are the real brand colours. Give them a surface that
+contrasts — a white chip, a neutral card — or use the monochrome variant.
+
 Importing one icon costs roughly 0.6 kB gzipped, and only what you import is
 bundled — the size of the set is not the size of your build.
 

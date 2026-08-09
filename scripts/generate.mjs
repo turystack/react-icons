@@ -21,7 +21,11 @@ import * as lucide from 'lucide-react'
 import * as si from 'simple-icons'
 import * as solar from '@solar-icons/react-perf/Outline'
 
-import { BRAND_COLOUR_VARIANTS, BRANDS } from './brands.mjs'
+import {
+	BRAND_COLOUR_VARIANTS,
+	BRANDS,
+	MONOCHROME_BRANDS,
+} from './brands.mjs'
 import { CURATED } from './curated.mjs'
 import { automatch } from './map.mjs'
 
@@ -163,13 +167,20 @@ const brandArtwork = [
 				fail(`brands.mjs lists "${slug}", absent from simple-icons`)
 			}
 
+			// A monochrome mark has no colour to keep, so its colour variant
+			// inherits `color` and stays readable on either ground.
+			const monochrome = MONOCHROME_BRANDS.has(name)
+
 			return {
-				hex: `#${icon.hex}`,
+				hex: monochrome ? 'black-or-white' : `#${icon.hex}`,
+				monochrome,
 				name,
 				paths: [
 					{
 						d: icon.path,
-						fill: `#${icon.hex}`,
+						...(!monochrome && {
+							fill: `#${icon.hex}`,
+						}),
 					},
 				],
 				slug,
@@ -243,22 +254,26 @@ for (const platform of PLATFORMS) {
 		fs.writeFileSync(file, source)
 	}
 
-	for (const { hex, name, paths, slug, title } of brandArtwork) {
+	for (const { hex, monochrome, name, paths, slug, title } of brandArtwork) {
 		const list = (withFill) =>
 			paths
 				.map(
 					(p) =>
 						`\t{\n\t\td: '${p.d}',${
-							withFill ? `\n\t\tfill: '${p.fill}',` : ''
+							withFill && p.fill ? `\n\t\tfill: '${p.fill}',` : ''
 						}\n\t},\n`,
 				)
 				.join('')
+
+		const colourDoc = monochrome
+			? `/**\n * ${title} — the mark has no colour: black on light grounds, white on dark\n * ones, which is what \`color\` already does. Same drawing as \`${name}Icon\`,\n * kept so every brand answers to the same pair of names.\n */`
+			: `/** ${title} in its official ${hex} palette, for sign-in buttons. */`
 
 		fs.writeFileSync(
 			path.join(brandsDir, `${slug}-icon.tsx`),
 			`${BANNER}import { createBrand } from '../create-brand.js'\n\n/** ${title}, monochrome — inherits \`color\` like every other icon. */\nexport const ${name}Icon = createBrand('icon-${slug}', [\n${list(
 				false,
-			)}])\n\n/** ${title} in its official ${hex} palette, for sign-in buttons. */\nexport const ${name}ColorIcon = createBrand('icon-${slug}-color', [\n${list(
+			)}])\n\n${colourDoc}\nexport const ${name}ColorIcon = createBrand('icon-${slug}-color', [\n${list(
 				true,
 			)}])\n`,
 		)
