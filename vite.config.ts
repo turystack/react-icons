@@ -6,6 +6,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
+        manifest: resolve(__dirname, 'src/manifest.ts'),
         'mobile/index': resolve(__dirname, 'src/mobile/index.ts'),
         'web/index': resolve(__dirname, 'src/web/index.ts'),
       },

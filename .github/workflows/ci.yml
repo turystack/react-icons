@@ -26,6 +26,18 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      # Most of src/ is generated from scripts/. Editing the mapping and
+      # forgetting to regenerate would otherwise pass every other check and
+      # ship a set that does not match what the mapping says.
+      - name: Generated icons are up to date
+        run: |
+          pnpm generate
+          if ! git diff --quiet; then
+            echo "::error::src/ is out of date — run 'pnpm generate' and commit the result."
+            git diff --stat
+            exit 1
+          fi
+
       - name: Typecheck
         run: pnpm typecheck
 

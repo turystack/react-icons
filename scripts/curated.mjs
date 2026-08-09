@@ -1,0 +1,300 @@
+/**
+ * Hand-written half of the lucide → Solar mapping.
+ *
+ * The automatic pass in `map.mjs` only matches when the words line up, which
+ * covers a third of what Solar can actually answer for: lucide says `Search`
+ * where Solar says `Magnifer`, `ShoppingCart` where Solar says `Cart`, `Send`
+ * where Solar draws a paper plane and calls it `Plain`. Everything below is a
+ * judgement the words could not make.
+ *
+ * Two forms:
+ *   'SolarName'      — draw this Solar glyph under the lucide name
+ *   '@ExistingIcon'  — reuse an icon this package already hand-wrote
+ *
+ * Both sides are checked against the real catalogues at generation time, so a
+ * typo here fails the build instead of shipping an icon that does not exist.
+ *
+ * A lucide name absent from this file and unmatched automatically is dropped on
+ * purpose: Solar has no `Plane`, `Fingerprint`, `Puzzle`, `Diamond`, `Brush`,
+ * `Barcode` or `Megaphone`, and inventing a near-enough substitute for those
+ * would hand back an icon that means something else.
+ */
+export const CURATED = {
+	// ── status ────────────────────────────────────────────────────────────
+	AlertCircle: 'DangerCircle',
+	AlertOctagon: 'DangerSquare',
+	AlertTriangle: 'DangerTriangle',
+	Ban: 'Forbidden',
+	BadgeCheck: 'VerifiedCheck',
+	CheckCircle: '@SuccessIcon',
+	CheckCircle2: '@SuccessIcon',
+	CircleAlert: 'DangerCircle',
+	CircleCheck: '@SuccessIcon',
+	CircleCheckBig: 'CheckCircle',
+	CircleHelp: '@HelpIcon',
+	CircleSlash: 'SlashCircle',
+	CircleX: '@ErrorIcon',
+	HelpCircle: '@HelpIcon',
+	Loader: '@LoadingIcon',
+	Loader2: '@LoadingIcon',
+	LoaderCircle: '@LoadingIcon',
+	OctagonAlert: 'DangerSquare',
+	ShieldAlert: 'ShieldWarning',
+	ShieldX: 'ShieldCross',
+	TriangleAlert: 'DangerTriangle',
+	XCircle: '@ErrorIcon',
+
+	// ── chrome & navigation ───────────────────────────────────────────────
+	ArrowDownCircle: 'RoundArrowDown',
+	ArrowLeftCircle: 'RoundArrowLeft',
+	ArrowLeftRight: 'TransferHorizontal',
+	ArrowRightCircle: 'RoundArrowRight',
+	ArrowUpCircle: 'RoundArrowUp',
+	ArrowUpDown: 'TransferVertical',
+	ChevronDownCircle: 'RoundAltArrowDown',
+	ChevronDownSquare: 'SquareAltArrowDown',
+	ChevronLeftCircle: 'RoundAltArrowLeft',
+	ChevronLeftSquare: 'SquareAltArrowLeft',
+	ChevronRightCircle: 'RoundAltArrowRight',
+	ChevronRightSquare: 'SquareAltArrowRight',
+	ChevronUpCircle: 'RoundAltArrowUp',
+	ChevronUpSquare: 'SquareAltArrowUp',
+	ChevronsDown: 'DoubleAltArrowDown',
+	ChevronsLeft: 'DoubleAltArrowLeft',
+	ChevronsRight: 'DoubleAltArrowRight',
+	ChevronsUp: 'DoubleAltArrowUp',
+	CircleArrowDown: 'RoundArrowDown',
+	CircleArrowLeft: 'RoundArrowLeft',
+	CircleArrowOutUpRight: 'RoundArrowRightUp',
+	CircleArrowRight: 'RoundArrowRight',
+	CircleArrowUp: 'RoundArrowUp',
+	CircleChevronDown: 'RoundAltArrowDown',
+	CircleChevronLeft: 'RoundAltArrowLeft',
+	CircleChevronRight: 'RoundAltArrowRight',
+	CircleChevronUp: 'RoundAltArrowUp',
+	Ellipsis: '@MoreIcon',
+	ExternalLink: 'Export',
+	Grip: 'Reorder',
+	GripHorizontal: 'MenuDots',
+	GripVertical: 'Reorder2',
+	LayoutDashboard: '@DashboardIcon',
+	LayoutGrid: 'Widget2',
+	Menu: '@MenuIcon',
+	MoreHorizontal: '@MoreIcon',
+	MoveHorizontal: 'TransferHorizontal',
+	MoveVertical: 'TransferVertical',
+	PanelLeft: 'Sidebar',
+	SquareChevronDown: 'SquareAltArrowDown',
+	SquareChevronLeft: 'SquareAltArrowLeft',
+	SquareChevronRight: 'SquareAltArrowRight',
+	SquareChevronUp: 'SquareAltArrowUp',
+	X: '@CloseIcon',
+
+	// ── search & filtering ────────────────────────────────────────────────
+	ListFilter: 'Filters',
+	Search: '@SearchIcon',
+	SlidersHorizontal: 'SliderHorizontal',
+	SlidersVertical: 'SliderVertical',
+	ZoomIn: 'MagniferZoomIn',
+	ZoomOut: 'MagniferZoomOut',
+
+	// ── history & repetition ──────────────────────────────────────────────
+	Redo: 'UndoRight',
+	Redo2: 'UndoRightRound',
+	RefreshCcw: '@RefreshIcon',
+	RefreshCw: '@RefreshIcon',
+	Repeat1: 'RepeatOne',
+	RotateCcw: 'Restart',
+	RotateCw: 'RefreshCircle',
+	Undo: 'UndoLeft',
+	Undo2: 'UndoLeftRound',
+
+	// ── files ─────────────────────────────────────────────────────────────
+	FileArchive: 'ZipFile',
+	FileCode: 'CodeFile',
+	FileDown: 'FileDownload',
+	FilePlus: 'DocumentAdd',
+	FileUp: 'FileSend',
+	FolderInput: 'MoveToFolder',
+	FolderPlus: 'AddFolder',
+	Paperclip: 'Paperclip2',
+	Save: 'Diskette',
+
+	// ── messaging ─────────────────────────────────────────────────────────
+	AtSign: 'MentionCircle',
+	BellRing: 'BellBing',
+	Hash: 'Hashtag',
+	Mail: '@EmailIcon',
+	MailOpen: 'LetterOpened',
+	MessageCircle: 'ChatRound',
+	MessageCircleMore: 'ChatRoundDots',
+	MessageSquare: 'ChatSquare',
+	MessagesSquare: 'ChatSquare2',
+	PhoneCall: 'PhoneCalling',
+	PhoneIncoming: 'IncomingCallRounded',
+	PhoneMissed: 'CallDropped',
+	PhoneOff: 'EndCall',
+	PhoneOutgoing: 'OutgoingCallRounded',
+	ReplyAll: 'MultipleForwardLeft',
+	Rss: 'Feed',
+	Send: 'Plain',
+	SendHorizontal: 'Plain2',
+	Share2: 'Share',
+
+	// ── media ─────────────────────────────────────────────────────────────
+	Airplay: 'Screencast',
+	AudioLines: 'Soundwave',
+	Cast: 'Screencast2',
+	Disc: 'Vinyl',
+	Disc3: 'VinylRecord',
+	FastForward: 'RewindForward',
+	Film: 'Clapperboard',
+	Images: 'GalleryWide',
+	ListMusic: 'Playlist',
+	Mic: 'Microphone',
+	Music: 'MusicNote',
+	Music2: 'MusicNote2',
+	Music3: 'MusicNote3',
+	Music4: 'MusicNote4',
+	PictureInPicture: 'Pip',
+	PictureInPicture2: 'Pip2',
+	Podcast: 'SoundwaveCircle',
+	Rewind: 'RewindBack',
+	SkipBack: 'SkipPrevious',
+	SkipForward: 'SkipNext',
+	Video: 'Videocamera',
+	Volume1: 'VolumeSmall',
+	Volume2: 'VolumeLoud',
+	VolumeX: 'Muted',
+
+	// ── devices & infrastructure ──────────────────────────────────────────
+	Battery: 'BatteryFull',
+	BatteryLow: 'BatteryLow',
+	BatteryMedium: 'BatteryHalf',
+	HardDrive: 'SsdRound',
+	MonitorSmartphone: 'Devices',
+	PlugZap: 'Socket',
+	Terminal: 'Programming',
+	Usb: 'UsbCircle',
+	Watch: 'WatchRound',
+	Wifi: 'WiFiRouter',
+	Zap: 'Bolt',
+
+	// ── commerce ──────────────────────────────────────────────────────────
+	Banknote: 'Banknote2',
+	CreditCard: 'Card',
+	DollarSign: 'Dollar',
+	Package: 'Box',
+	Percent: 'Sale',
+	Receipt: 'Bill',
+	ShoppingBag: 'Bag',
+	ShoppingBasket: 'CartLarge',
+	ShoppingCart: '@CartIcon',
+	Store: 'Shop',
+	Truck: 'Delivery',
+
+	// ── people ────────────────────────────────────────────────────────────
+	CircleUser: 'UserCircle',
+	Contact: 'UserId',
+	IdCard: 'UserId',
+	UserCheck: 'UserCheckRounded',
+	UserCircle: 'UserCircle',
+	UserMinus: 'UserMinusRounded',
+	UserPlus: 'UserPlusRounded',
+	UserRound: 'UserRounded',
+	UserX: 'UserCrossRounded',
+	UsersRound: '@UsersIcon',
+
+	// ── places & travel ───────────────────────────────────────────────────
+	Bike: 'Bicycling',
+	Briefcase: 'Case',
+	Building2: 'Buildings2',
+	Compass: 'CompassBig',
+	Hotel: 'Bed',
+	Locate: 'Gps',
+	LocateFixed: 'Gps',
+	Luggage: 'Suitcase',
+	MapPinMinus: 'MapPointRemove',
+	MapPinPlus: 'MapPointAdd',
+	Navigation: 'StreetsNavigation',
+	Signpost: 'Signpost2',
+	Train: 'Tram',
+
+	// ── time ──────────────────────────────────────────────────────────────
+	AlarmClock: 'Alarm',
+	CalendarCheck: 'CalendarMark',
+	CalendarPlus: 'CalendarAdd',
+	Hourglass: 'HourglassLine',
+	Timer: 'Stopwatch',
+
+	// ── data & charts ─────────────────────────────────────────────────────
+	Activity: 'Pulse',
+	BarChart: '@ChartIcon',
+	ChartColumn: '@ChartIcon',
+	ChartLine: 'Graph',
+	ChartPie: 'PieChart',
+	Gauge: 'SpeedometerMiddle',
+	LineChart: 'Graph',
+	PieChart: 'PieChart',
+	Presentation: 'PresentationGraph',
+	TrendingDown: 'GraphDown',
+	TrendingUp: 'GraphUp',
+
+	// ── text ──────────────────────────────────────────────────────────────
+	Bold: 'TextBold',
+	Italic: 'TextItalic',
+	Strikethrough: 'TextCross',
+	Type: 'Text',
+	Underline: 'TextUnderline',
+
+	// ── weather & nature ──────────────────────────────────────────────────
+	Droplet: 'Waterdrop',
+	Droplets: 'Waterdrops',
+	Flame: 'Fire',
+	Sparkles: 'Stars',
+	Thermometer: 'Temperature',
+
+	// ── reactions ─────────────────────────────────────────────────────────
+	Award: 'MedalStar',
+	HeartCrack: 'HeartBroken',
+	ThumbsDown: 'Dislike',
+	ThumbsUp: 'Like',
+	Trophy: 'Cup',
+
+	// ── tools & editing ───────────────────────────────────────────────────
+	CodeXml: 'Code2',
+	Cog: '@SettingsIcon',
+	Expand: 'FullScreen',
+	GitBranch: 'BranchingPathsUp',
+	Home: '@HomeIcon',
+	House: '@HomeIcon',
+	Lightbulb: 'Lightbulb',
+	Link2Off: 'LinkBroken',
+	Maximize: 'FullScreen',
+	Minimize: 'QuitFullScreen',
+	Pencil: '@EditIcon',
+	PencilLine: '@EditIcon',
+	Pipette: 'Dropper',
+	Scan: 'ObjectScan',
+	Settings2: 'SettingsMinimalistic',
+	Shrink: 'QuitFullScreen',
+	Sliders: 'Tuning',
+	SquarePen: '@EditIcon',
+	Trash: '@DeleteIcon',
+	Trash2: '@DeleteIcon',
+	Unlink: 'LinkBroken',
+	Wand: 'MagicStick',
+	Wand2: 'MagicStick2',
+	WandSparkles: 'MagicStick3',
+
+	// ── security ──────────────────────────────────────────────────────────
+	KeyRound: 'KeyMinimalistic',
+	LogIn: '@LoginIcon',
+	LogOut: '@LogoutIcon',
+	ScanFace: 'FaceScanCircle',
+
+	// ── food & hospitality ────────────────────────────────────────────────
+	Coffee: 'CupHot',
+	Soup: 'Ladle',
+	Wine: 'Wineglass',
+}
